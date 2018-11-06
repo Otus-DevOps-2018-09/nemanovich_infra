@@ -21,3 +21,20 @@ Host someinternalhost
   ProxyJump bastion
 ```
 
+Развернуто приложение https://github.com/express42/reddit.git через gcloud + startup-script:
+testapp_IP = 35.234.79.54
+testapp_port = 9292 
+
+Команда для запуска: 
+```
+gcloud compute instances create reddit-app \
+  --boot-disk-size=10GB \
+  --image-family ubuntu-1604-lts \
+  --image-project=ubuntu-os-cloud \
+  --machine-type=g1-small \
+  --tags puma-server  \
+  --restart-on-failure \
+  --metadata-from-file startup-script=/startup_script.sh
+```
+Команда для создания правила в firewall:
+```gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags puma-server```
