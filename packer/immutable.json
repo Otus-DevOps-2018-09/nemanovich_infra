@@ -24,12 +24,11 @@
 		{
 			"type": "file",
 			"source": "files",
-			"destination": "/home/otus/"
+			"destination": "/lib/systemd/system"
 		},
 		{
 			"type": "shell",
 			"inline": [
-				"cp /home/otus/files/puma.service /lib/systemd/system/",
 				"systemctl enable puma",
 				"systemctl start puma"
 			],
