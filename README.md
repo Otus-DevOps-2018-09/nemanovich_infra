@@ -41,3 +41,10 @@ gcloud compute instances create reddit-app \
 
 В /packer лежат: базовый (ubuntu16.json) и полный (immutable.json) образы для деплоя приложения reddit с помощью packer, а также файл с переменными packer для них.
 /config-scripts/create-reddit-vm.sh - gcloud скрипт для запуска инстанса с полным image reddit
+
+###terraform-1
+В /terraform добавлено tf-описание развертывания приложения reddit с правилом firewall default-puma-server
+ и добавлением ssh ключей в metadata проекта. Note! При `terraform apply` происходит перезаписывание ключей поверх существующих.
+
+
+ 
