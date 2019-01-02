@@ -38,3 +38,6 @@ gcloud compute instances create reddit-app \
 ```
 Команда для создания правила в firewall:
 ```gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags puma-server```
+
+В /packer лежат: базовый (ubuntu16.json) и полный (immutable.json) образы для деплоя приложения reddit с помощью packer, а также файл с переменными packer для них.
+/config-scripts/create-reddit-vm.sh - gcloud скрипт для запуска инстанса с полным image reddit

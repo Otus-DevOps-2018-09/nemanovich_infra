@@ -1,0 +1,14 @@
+[Unit]
+Description=Startup puma
+After=network.target
+ 
+[Service]
+Type=simple
+User=otus
+WorkingDirectory=/home/otus/reddit
+ExecStart=/usr/local/bin/puma -d
+ 
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
