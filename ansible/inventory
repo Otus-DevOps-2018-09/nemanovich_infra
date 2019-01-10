@@ -1,0 +1,1 @@
+appserver ansible_host=35.195.201.32 ansible_user=otus ansible_private_key_file=~/.ssh/otus

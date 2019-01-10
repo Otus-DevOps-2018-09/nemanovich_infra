@@ -4,14 +4,6 @@ provider "google" {
   region  = "${var.region}"
 }
 
-resource "google_compute_project_metadata" "ssh_keys" {
-  metadata {
-    ssh-keys = <<EOF
-otus:${var.public_key} otus
-EOF
-  }
-}
-
 module "app" {
   source          = "../modules/app"
   public_key_path = "${var.public_key_path}"
