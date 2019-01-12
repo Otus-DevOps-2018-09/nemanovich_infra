@@ -46,5 +46,10 @@ gcloud compute instances create reddit-app \
 В /terraform добавлено tf-описание развертывания приложения reddit с правилом firewall default-puma-server
  и добавлением ssh ключей в metadata проекта. Note! При `terraform apply` происходит перезаписывание ключей поверх существующих.
 
+###terraform-2
+ - В /packer добавлены описания image для vm отдельно с mongodb и приложением
+ - Инфраструктура в terraform разделена на stage и prod окружения
+ - DB и приложение поднимаются на разных машинах (без provisioners, т.е только окружение для них)
+ - Terraform state теперь работает через gcp backend 
+ - Добавлен пример создания бакетов в gcp через tf-модуль
 
- 
