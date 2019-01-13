@@ -53,3 +53,6 @@ gcloud compute instances create reddit-app \
  - Terraform state теперь работает через gcp backend 
  - Добавлен пример создания бакетов в gcp через tf-модуль
 
+###ansible-1
+ - Добавлены настройки ansible (ansible.cfg и inventory в ini, yml и json форматах) 
+ - Добавлен плейбук clone.yml (клонирует репу с тестовым приложением reddit)
