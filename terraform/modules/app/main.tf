@@ -18,11 +18,8 @@ resource "google_compute_instance" "app" {
     }
   }
 
-  connection {
-    type        = "ssh"
-    user        = "otus"
-    agent       = false
-    private_key = "${file(var.private_key_path)}"
+  metadata {
+    ssh-keys = "otus:${file(var.public_key_path)}"
   }
 }
 

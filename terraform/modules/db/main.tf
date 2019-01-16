@@ -14,6 +14,10 @@ resource "google_compute_instance" "db" {
     network       = "default"
     access_config = {}
   }
+
+  metadata {
+    ssh-keys = "otus:${file(var.public_key_path)}"
+  }
 }
 
 resource "google_compute_firewall" "firewall_mongo" {
