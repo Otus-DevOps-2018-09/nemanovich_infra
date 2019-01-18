@@ -24,10 +24,6 @@ variable public_key {
   description = "Public key for ssh access"
 }
 
-variable disk_image {
-  description = "Disk image"
-}
-
 variable app_disk_image {
   description = "Disk image for reddit app"
   default     = "reddit-app-base"

@@ -39,8 +39,11 @@ gcloud compute instances create reddit-app \
 Команда для создания правила в firewall:
 ```gcloud compute firewall-rules create default-puma-server --allow tcp:9292 --target-tags puma-server```
 
+
 В /packer лежат: базовый (ubuntu16.json) и полный (immutable.json) образы для деплоя приложения reddit с помощью packer, а также файл с переменными packer для них.
-/config-scripts/create-reddit-vm.sh - gcloud скрипт для запуска инстанса с полным image reddit
+/config-scripts/create-reddit-vm.sh - gcloud скрипт для запуска инстанса с полным image reddit. 
+
+Для сбора image: `packer build -var-file=packer/variables.json packer/app.json` (db.json)
 
 ###terraform-1
 В /terraform добавлено tf-описание развертывания приложения reddit с правилом firewall default-puma-server
@@ -56,3 +59,9 @@ gcloud compute instances create reddit-app \
 ###ansible-1
  - Добавлены настройки ansible (ansible.cfg и inventory в ini, yml и json форматах) 
  - Добавлен плейбук clone.yml (клонирует репу с тестовым приложением reddit)
+
+###ansible-2
+ - Настроено получение хостов из terraform (проект terraform-inventory). Т.к. настроен remote state, 
+перед запуском плейбука надо обновить локальный state (`terraform state pull > terraform.tfstate`)
+ - Provisioning в packer теперь осуществляется через ansible
+ - Добавлены playbooks для деплоя reddit (site.yml)  
