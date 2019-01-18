@@ -45,22 +45,22 @@ gcloud compute instances create reddit-app \
 
 Для сбора image: `packer build -var-file=packer/variables.json packer/app.json` (db.json)
 
-###terraform-1
+### terraform-1
 В /terraform добавлено tf-описание развертывания приложения reddit с правилом firewall default-puma-server
  и добавлением ssh ключей в metadata проекта. Note! При `terraform apply` происходит перезаписывание ключей поверх существующих.
 
-###terraform-2
+### terraform-2
  - В /packer добавлены описания image для vm отдельно с mongodb и приложением
  - Инфраструктура в terraform разделена на stage и prod окружения
  - DB и приложение поднимаются на разных машинах (без provisioners, т.е только окружение для них)
  - Terraform state теперь работает через gcp backend 
  - Добавлен пример создания бакетов в gcp через tf-модуль
 
-###ansible-1
+### ansible-1
  - Добавлены настройки ansible (ansible.cfg и inventory в ini, yml и json форматах) 
  - Добавлен плейбук clone.yml (клонирует репу с тестовым приложением reddit)
 
-###ansible-2
+### ansible-2
  - Настроено получение хостов из terraform (проект terraform-inventory). Т.к. настроен remote state, 
 перед запуском плейбука надо обновить локальный state (`terraform state pull > terraform.tfstate`)
  - Provisioning в packer теперь осуществляется через ansible
