@@ -65,3 +65,9 @@ gcloud compute instances create reddit-app \
 перед запуском плейбука надо обновить локальный state (`terraform state pull > terraform.tfstate`)
  - Provisioning в packer теперь осуществляется через ansible
  - Добавлены playbooks для деплоя reddit (site.yml)  
+
+### ansible-3
+ - Реорганизована структура директорий в ansible
+ - Добавлены роли **db** и **app**
+ - Inventory разделены для stage и prod окружений
+ - Реализовано добавление пользователей (зашифровано с помощью ansible vault) 
